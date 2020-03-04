@@ -1,27 +1,44 @@
+<!-- should go in center grid of page-->
 <!DOCTYPE html>
-<html>
-    <head>
-    <meta charset="UTF-8">  
-  
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-    <meta name="author" content="Vinh Do, Kirtana Pathak, Liem Budzien">
-    <meta name="description" content="Redirect page for Telestrations">  
+<html lang="en">
+    <head>	
     
-    <title>Telestrations</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        
+        <meta name="authors" content="Kirtana Pathak, Vinh Do, Liem Budzien">
+        <meta name="description" content="Lobby page">
+        <meta name="keywords" content="telestrations, lobby">
+           
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400">
+        
+        <!--favicon-->
+        <link rel="shortcut icon" href="http://www.cs.virginia.edu/~up3f/cs4640/images/webpl.png" type="image/ico" />
+        <title>Telestrations</title>
+    
+</head>
+<body>
+    <h1 id= "lobbyspace">
+        Lobby
+    </h1>
+    <div class="row">
+        <div class=col-md-4></div>
+        <div class=col-md-4>
+            <button class="btn btn-primary btn-lg" style="width: 75%;">Create a New Lobby</button>
+            <h3>or<br>Join an existing lobby!</h3>
+            <div class= "form-group">
+                <input type="text" class ="form-control" id="code" placeholder="Enter code"/>
+            </div>
+            <button class="btn btn-primary btn-lg" onclick="window.location.href= 'drawing.html'" >Join Game</button>
+            </div>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles/custom.css" />
-       
-        <!--  redirect to personal-page.html in 1 seconds -->
-        <meta http-equiv="refresh" content="1; url=login.html" />
-    </head>
+    </div>
+    
 
-    <body class="container redirect">
-        <h2>If you are not redirected to personal-page in 1 seconds,
-        <a href="login.html">click to redirect.
-        </h2>
-    </body>
 
+
+</body>
 </html>
-
