@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">  
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <meta name="author" content="Vinh Do, Kirtana Pathak, Liem Budzien">
+    <meta name="description" content="Results page for Telestrations">  
+    
+    <title>Telestrations</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/custom.css" />
+       
+    </head>
+
+    <body class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <button class="btn btn-lg btn-danger btn-top" type="submit" onclick="logOut()">Log Out</button>
+                </div>
+                <div class="col-md-4">
+                    <h2>Telestrations</h2>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-lg btn-success btn-top" type="submit" onclick="newGame()">New Game</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 card">
+                    <img src="images/cat1.png">
+                </div>
+                <div class="col-md-4 card">
+                    <div class="card-body">
+                        <p>Cat that is dead inside</p>
+                    </div>
+                </div>
+                <div class="col-md-4 card">
+                    <img src="images/cat2.png">
+                </div>
+            </div>
+
+            
+            <div class="row">
+                <div class="col-md-4 card">
+                    <div class="card-body">
+                        <p>Dead cat</p>
+                    </div>
+                </div>
+                <div class="col-md-4 card">
+                    <img src="images/cat3.png">
+                </div>
+                <div class="col-md-4 card">
+                    <div class="card-body">
+                        <p>Ghost cat</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 card">
+                    <img src="images/cat4.png">
+                </div>
+                <div class="col-md-4 card">
+                    <div class="card-body">
+                        <p>Ghost cat</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-lg btn-primary" type="submit" onclick="playAgain()">Play Again</button>
+                </div>
+            </div>
+
+    <script>
+        function logOut() {
+            if(confirm("Are you sure you want to leave the current lobby and logout?")) {
+            document.location.href = "login.html";
+            }
+        }
+
+        function newGame() {
+            if(confirm("Are you sure you want to leave the current lobby?")) {
+            document.location.href = "lobby.html";
+            }
+        }
+    </script>
+        
+    </body>
+
+</html>
+
