@@ -82,9 +82,6 @@ img {
     display: block;
     margin-left: auto;
     margin-right: auto;
-<<<<<<< HEAD
-    width: 100%;
-=======
     width: 95%;
     height: auto;
 }
@@ -92,10 +89,9 @@ img {
 .mainImage {
     margin-left: auto;
     margin-right: auto;
-    width: 70%;
+    width: 60rem;
     height: auto;
     border-radius: 20px;
->>>>>>> ff0b251f3db3a340a41792f223e43e45dbf0afb3
 }
 
 .register {
