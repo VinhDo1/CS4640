@@ -93,6 +93,10 @@ img {
     border-radius: 20px;
 }
 
+.guessBox {
+    margin-top: 20px;
+}
+
 .register {
     text-decoration: underline;
 }
