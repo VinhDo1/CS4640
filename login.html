@@ -28,30 +28,45 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-    <form id="fm-login" action="" method="post" onsubmit="return validateInput()"> 
-        <div id="email" class="form-group mx-sm-5 mb-2">
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" autofocus required>
-        </div>    
+            <form class="needs-validation" action="" id="login" method="post"> 
+            <div class="form-group mx-sm-5 mb-2">
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" autofocus required>
+                <small id="emailHelp" class="form-text wrong-login" ></small>
+            </div>    
 
-        <div class="form-group mx-sm-5 mb-2 form-rounded">
-            <input type="password" class ="form-control" placeholder="Password" required/>
-            <button class="btn btn-lg btn-primary" type="submit" onclick="login()">Sign in</button>
-            <!-- <input type="submit" id="btn-submit" value="Sign in" class="btn btn-primary btn-lg" role="button"/> -->
-            <script>
-                function login()
-                {
-                    
-                    location.href = "./lobby.html";
-                } 
-            </script>
-            <br>    
-            <a href="./register.html" class="register">Don't have an account? Register now</a>
-        </div> 
-    </form>
+            <div class="form-group mx-sm-5 mb-2 form-rounded">
+                <input type="password" class ="form-control" id="password" placeholder="Password" required/>
+                <small id="passwordHelp" class="form-text wrong-login" ></small>
+            </div>
+            <div class="form-group mx-sm-5 mb-2 form-rounded">
+                <button class="btn btn-lg btn-primary" type="submit" onclick="login()">Sign in</button>
+                <br>    
+                <a href="register.html" class="register">Don't have an account? Register now</a>
+            </div> 
+        </form>
     </div>
         <div class="col-md-4"></div>
     </div>
 
+    <script> 
+        function login() {
+            var email = document.getElementById("email");
+            var password = document.getElementById("password");
+            if(!email.checkValidity()) {
+                var wrongEmail = document.getElementById("emailHelp");
+                wrongEmail.innerHTML = "Invalid email";
+            }
+            else if(password.value == "") {
+                var wrongPassword = document.getElementById("passwordHelp");
+                wrongPassword.innerHTML = "No password entered";
+            }
+            else {
+                location.href = "lobby.html";
+            }
+            return true;
+
+        }
+        </script>
 
 
 </body>

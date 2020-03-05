@@ -12,7 +12,7 @@
         <meta name="keywords" content="telestrations, lobby">
            
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/custom.css">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400">
         
         <!--favicon-->
@@ -21,24 +21,28 @@
     
 </head>
 <body>
+    
     <h1 id= "lobbyspace">
         Lobby
     </h1>
     <div class="row">
-        <div class=col-md-4></div>
-        <div class=col-md-4>
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <br>
             <button class="btn btn-primary btn-lg" style="width: 75%;">Create a New Lobby</button>
-            <h3>or<br>Join an existing lobby!</h3>
-            <div class= "form-group">
-                <input type="text" class ="form-control" id="code" placeholder="Enter code"/>
-            </div>
-            <button class="btn btn-primary btn-lg" onclick="window.location.href= 'drawing.html'" >Join Game</button>
-            </div>
+            <h3><br>OR<br><br>Join an existing lobby!</h3><br>
+            <form id="fm-login" action="" method="post" onsubmit="return validateInput()"> 
+            <div id="email" class="form-group mx-sm-5 mb-2">
+                <input type="text" class="form-control" id="code" placeholder="Enter code" autofocus required>
+            </div>    
 
+            <div class="form-group mx-sm-5 mb-2 form-rounded">
+                <button class="btn btn-primary btn-lg" onclick="window.location.href= 'drawing.html'" >Join Game</button>
+
+            </div> 
+        </form>
     </div>
+
     
-
-
-
 </body>
 </html>

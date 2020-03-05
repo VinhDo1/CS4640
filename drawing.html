@@ -11,7 +11,7 @@
         <meta name="keywords" content="drawing, telestrations">
            
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/custom.css">
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400">
         
         <!--icon on tab of page-->
@@ -21,15 +21,13 @@
 </head>
 <body style='margin: 0'>
     <div id ="heading">
-        <h3>
-            It's time to draw! Your word is <span style="text-decoration: underline;">Ghost cat</span>!
-        </h3>
+            <h3>
+                It's time to draw! Your word is <span style="text-decoration: underline;">Ghost cat</span>!
+            </h3>
     </div>
-
-    <canvas id="myCanvas" width = "900" height="500" style="border:1px solid #000000;background-color: white;text-align:center">
-                 Sorry, your browser does not support the canvas.
-    </canvas>
-    <div>
+        <canvas id="myCanvas" width = "1000%" height="500%" style="border:0.01rem solid #000000;background-color: white;text-align:center">
+            Sorry, your browser does not support the canvas.
+        </canvas>
         <div id="colors">
             <div class="shade active"style="background-color:black"></div>
             <div class="shade"style="background-color:red"></div>
@@ -39,7 +37,6 @@
             <div class="shade"style="background-color:blue"></div>
             <div class="shade"style="background-color:purple"></div>
         </div>
-
     </div>
     <div text-align="center">
         <button class="btn btn-danger btn-game" onclick="window.location.href='lobby.html'">Exit Game</button>
