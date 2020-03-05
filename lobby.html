@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400">
         
         <!--favicon-->
-        <link rel="shortcut icon" href="http://www.cs.virginia.edu/~up3f/cs4640/images/webpl.png" type="image/ico" />
+        <link rel="shortcut icon" href="images/favicon.png" type="image/ico" />
         <title>Telestrations</title>
     
 </head>
@@ -31,18 +31,34 @@
             <br>
             <button class="btn btn-primary btn-lg" style="width: 75%;">Create a New Lobby</button>
             <h3><br>OR<br><br>Join an existing lobby!</h3><br>
-            <form id="fm-login" action="drawing.html" method="post" onsubmit="return validateInput()"> 
-            <div class="form-group mx-sm-5 mb-2">
-                <input type="text" class="form-control" id="code" placeholder="Enter 6 letter code" autofocus required>
-            </div>    
+            <form class="needs-validation" action="drawing.html" onsubmit= "return validateCode()"> 
+                <div class="form-group mx-sm-5 mb-2">
+                    <input type="text" id="code" class="form-control" placeholder="Enter 6 letter code" autofocus required/>
+                </div>    
+                <br/><input type="submit" value="Join Game" class="btn btn-primary btn-lg"></input>
 
-            <div class="form-group mx-sm-5 mb-2 form-rounded">
-                <button type="submit" class="btn btn-primary btn-lg" >Join Game</button>
-
-            </div> 
-        </form>
+                </div> 
+            </form>
+        </div>
     </div>
 
+    <script>
     
+    
+    var lengthCheck = (codeLength) => codeLength-6;
+
+    //Function to check to make appropriate code is entered
+    function validateCode() {
+        var entered = document.getElementById("code").value;
+        if ((lengthCheck(entered.length)) != 0){
+            alert("The code's length should be 6.");
+            return false;
+             }
+        else{
+            return true;
+             }
+        }
+    </script>
+
 </body>
 </html>
