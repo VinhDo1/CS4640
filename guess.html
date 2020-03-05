@@ -19,6 +19,7 @@
         <title>Telestrations</title>
     
     </head>
+    
     <script>
         function startTimer(duration, display) {
             var timer = duration, minutes, seconds;
@@ -31,14 +32,15 @@
 
                 display.textContent = minutes + ":" + seconds;
 
-                if (--timer < 0) {
-                    timer = duration;
+                timer--;
+                if (timer == -2) {
+                    window.location.href='results.html'
                 }
             }, 1000);
         }
 
         window.onload = function () {
-            var time = 60;
+            var time = 59;
             display = document.querySelector('#time');
             startTimer(time, display);
         };
