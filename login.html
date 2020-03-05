@@ -28,7 +28,7 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <form class="needs-validation" action="" id="login" method="post"> 
+            <form class="needs-validation" action="lobby.html" id="login" method="post"> 
             <div class="form-group mx-sm-5 mb-2">
                 <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" autofocus required>
                 <small id="emailHelp" class="form-text wrong-login" ></small>
@@ -49,23 +49,30 @@
     </div>
 
     <script> 
-        function login() {
-            var email = document.getElementById("email");
-            var password = document.getElementById("password");
-            if(!email.checkValidity()) {
-                var wrongEmail = document.getElementById("emailHelp");
-                wrongEmail.innerHTML = "Invalid email";
-            }
-            else if(password.value == "") {
-                var wrongPassword = document.getElementById("passwordHelp");
-                wrongPassword.innerHTML = "No password entered";
-            }
-            else {
-                location.href = "lobby.html";
-            }
-            return true;
-
-        }
+        const email = document.getElementById("email");
+        email.addEventListener("input", function (event) {
+            if (email.validity.typeMismatch) {
+                email.setCustomValidity("Invalid email address");
+            } else {
+                email.setCustomValidity("");
+            } 
+        });
+        // const password = document.getElementById("password");
+        // email.addEventListener("input", function (event) {
+        //     if (password.validity.valueMissing) {
+        //         password.setCustomValidity("Missing password");
+        //     } else {
+        //         email.setCustomValidity("");
+        //     } 
+        // });
+        // function login() {
+        //     var email = document.getElementById("email");
+        //     var password = document.getElementById("password");
+        //     if(email.checkValidity() && password.value != "") {
+        //         location.href = "lobby.html";
+        //     }
+        //     return true;
+        // }
         </script>
 
 
