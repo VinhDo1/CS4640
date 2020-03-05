@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400">
         
         <!--icon on tab of page-->
-        <link rel="shortcut icon" href="http://www.cs.virginia.edu/~up3f/cs4640/images/webpl.png" type="image/ico" />
+        <link rel="shortcut icon" href="images/favicon.png" type="image/ico" />
         <title>Telestrations</title>
     
 </head>
@@ -25,9 +25,14 @@
             It's time to draw! Your word is <span style="text-decoration: underline;">Ghost cat</span>!
         </h3>
     </div>
-        <canvas id="myCanvas" width = "1000%" height="500%" style="border:0.01rem solid #000000;background-color: white;text-align:center">
-            Sorry, your browser does not support the canvas.
+    <div class="row">
+        <div class="col-md-2"></div>
+        <canvas class="col-md-8" id="myCanvas" style="border:0.1rem solid #000000;background-color: white;text-align:center">
+                 Sorry, your browser does not support the canvas.
         </canvas>
+        <div class="col-md-2"></div>
+    </div>
+    <div>
         <div id="colors">
             <div class="shade active"style="background-color:black"></div>
             <div class="shade"style="background-color:red"></div>
@@ -37,14 +42,12 @@
             <div class="shade"style="background-color:blue"></div>
             <div class="shade"style="background-color:purple"></div>
         </div>
+
     </div>
     <div text-align="center">
         <button class="btn btn-danger btn-game" onclick="window.location.href='lobby.html'">Exit Game</button>
-        <button class="btn btn-success btn-game" onclick="window.location.href='guess.html'">Done</button>
+        <button class="btn btn-success btn-game">Done</button>
     </div>
-
-    
-
 
     <script src="drawing.js"></script>
     
