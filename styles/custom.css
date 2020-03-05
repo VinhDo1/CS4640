@@ -113,6 +113,10 @@ img {
     margin-bottom: 2%;
 }
 
+.guessBox {
+    margin-top: 20px;
+}
+
 .btn-game {
     font-family: "Comic Sans MS", Chalkduster, sans-serif;
     color: white;
