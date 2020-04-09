@@ -15,12 +15,12 @@
     <link rel="shortcut icon" href="images/favicon.png" type="image/ico" />
        
         <!--  redirect to personal-page.html in 1 seconds -->
-        <meta http-equiv="refresh" content="1; url=login.html" />
+        <meta http-equiv="refresh" content="1; url=login.php" />
     </head>
 
     <body class="container redirect">
         <h2>If you are not redirected to personal-page in 1 seconds,
-        <a href="login.html">click to redirect.
+        <a href="login.php">click to redirect.
         </h2>
     </body>
 

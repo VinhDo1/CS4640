@@ -72,7 +72,7 @@
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4">
-                <input class="form-control form-control-lg guessBox" type="text" placeholder="enter your guess">
+                <input class="form-control form-control-lg guessBox" type="text" placeholder="enter your guess" autofocus>
             </div>    
             <div class="col-md-4"></div>
         </div>
