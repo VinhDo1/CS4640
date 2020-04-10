@@ -49,10 +49,13 @@
         if(isset($_SESSION['username']))
         {
     ?>
-    <div id ="heading">
-        <h3>
-            It's time to draw! Your word is <span style="text-decoration: underline;"><font color="pink"><?php echo $_SESSION['prompt'];?></font></span>!
-        </h3>
+
+    <div class="row" id ="heading">
+        <div class="col-md-12">
+            <h3>
+                It's time to draw! Your word is <span style="text-decoration: underline;"><font color="black"><?php echo $_SESSION['prompt'];?></font></span>!
+            </h3>
+        </div>
     </div>
 
     <div class="row">
@@ -63,7 +66,7 @@
         </div>
         <div class="col-md-8">
             <div class="text-center">
-                <canvas id="myCanvas" width = "1000%" height="500%" style="border:0.01rem solid #000000;background-color: white;text-align:center">
+                <canvas id="myCanvas" width = "1000%" height="485%" style="border:0.01rem solid #000000;background-color: white;text-align:center">
                     Sorry, your browser does not support the canvas.
                 </canvas>
                 <div id="colors">
@@ -79,11 +82,15 @@
         </div>
         <div class="col-md-2"></div>
     </div>
-    <div text-align="center">
-        <button class="btn btn-danger btn-game" onclick="window.location.href='lobby.php'">Exit Game</button>
-        <button class="btn btn-success btn-game" onclick="window.location.href='guess.php'">Done</button>
+    <div class="row" text-align="center">
+        <div class="col-md-12">
+            <button class="btn btn-danger btn-game" onclick="window.location.href='lobby.php'">Exit Game</button>
+            <button class="btn btn-success btn-game" onclick="window.location.href='guess.php'">Done</button>
+        </div>
     </div>
     <script src="drawing.js"></script>
+    
+
     <?php 
         }
         else

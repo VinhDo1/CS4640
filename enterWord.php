@@ -62,9 +62,6 @@
                 </h3>
             </div>
             <div class="col-md-8">
-                <!-- <div class="text-center"> -->
-                    <!-- <img class="mainImage" src="images/cat4.png" alt="..."> -->
-                <!-- </div> -->
             </div>
             <div class="col-md-2"></div>
         </div>

@@ -40,7 +40,7 @@
                 <small id="passwordHelp" class="form-text wrong-login" ></small>
             </div>
             <div class="form-group mx-sm-5 mb-2 form-rounded">
-                <button class="btn btn-lg btn-primary" type="submit" onclick="login()">Sign in</button>
+                <button class="btn btn-lg btn-primary" type="submit" >Sign in</button>
                 <br>    
                 <a href="register.php" class="register">Don't have an account? Register now</a>
             </div> 

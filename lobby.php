@@ -29,16 +29,18 @@
     <h1 id= "lobbyspace">
         Lobby
     </h1>
-    <h3>Welcome, <font color="pink" style="font-style:italic"><?php if(isset($_SESSION['username'])) echo $_SESSION['username'] . "!";?></font></h1>
+    <h3>Welcome, <font color="black" style="font-style:italic"><?php if(isset($_SESSION['username'])) echo $_SESSION['username'] . "!";?></font></h1>
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
             <br>
             <button class="btn btn-primary btn-lg" style="width: 75%;">Create a New Lobby</button>
             <h3><br>OR<br><br>Join an existing lobby!</h3><br>
-            <form class="needs-validation" action="enterWord.php" onsubmit= "return validateCode()"> 
+            <form class="needs-validation" action="<?php $_SERVER['PHP_SELF']?>" onsubmit= "return validateCode()" method="get"> 
                 <div class="form-group mx-sm-5 mb-2">
-                    <input type="text" id="code" class="form-control" placeholder="Enter 6 letter code" autofocus required/>
+                    <input type="text" id="code" name="code" class="form-control" placeholder="Enter 6 letter code" autofocus required/>
+                    <!-- <input type ="hidden" name ="roomCode"
+                        value="<?php if(!empty($_POST['code'])) echo $_POST['code'] ?>" > -->
                 </div>    
                 <br/><input type="submit" value="Join Game" class="btn btn-primary btn-lg"></input>
 
@@ -53,9 +55,14 @@
         header('Location: login.php');
     }
     ?>
+    <?php
+        $code = '';
+        if(!empty($_GET['code']))
+        {
+            header('Location: ' . 'drawing.php?roomCode=' . $_GET['code']);
+        }
+    ?>
     <script>
-    
-    
     var lengthCheck = (codeLength) => codeLength-6;
 
     //Function to check to make appropriate code is entered
