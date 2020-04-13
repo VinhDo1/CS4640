@@ -95,13 +95,10 @@
         function done() {
             var canvas = document.getElementById('myCanvas');
             var drawingURL = canvas.toDataURL();
-            var dataString = {drawingURL: drawingURL};
 
             $.ajax({ 
-                url: "guess.php",
-                data: dataString,
+                data: {drawingURL: drawingURL},
                 type: "POST",
-                dataType: 'text',
                 success: function(output) {
                     window.location.href='guess.php'
                 },
@@ -111,7 +108,12 @@
             });
         }
     </script>
-    
+
+    <?php
+            if(isset($_POST['drawingURL'])){
+                $_SESSION["imgURL"] = $_POST['drawingURL']; 
+            }
+    ?>
 
     <?php 
         }
