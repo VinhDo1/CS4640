@@ -47,8 +47,9 @@
     </script>
     <body>
     <?php session_start(); 
+        $_SESSION["imgURL"] = $_POST['drawingURL'];  
         if(isset($_SESSION['username']))
-        {
+        { 
     ?>
         <div id ="heading">
             <h3>
@@ -63,7 +64,7 @@
             </div>
             <div class="col-md-8">
                 <div class="text-center">
-                    <img class="mainImage" src="images/cat4.png" alt="...">
+                    <img class="mainImage" src="<?php echo $_SESSION["imgURL"]; ?>" alt="<?php echo $_SESSION["imgURL"]; ?>">
                 </div>
             </div>
             <div class="col-md-2"></div>
