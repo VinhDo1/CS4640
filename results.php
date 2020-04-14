@@ -37,41 +37,16 @@
 
             <div class="row">
                 <div class="col-md-4 card">
-                    <img src="images/cat1.png">
-                </div>
-                <div class="col-md-4 card">
                     <div class="card-body">
-                        <p>Cat that is dead inside</p>
+                        <p>Original Word: <?php echo $_SESSION['prompt'];?></p>
                     </div>
                 </div>
                 <div class="col-md-4 card">
-                    <img src="images/cat2.png">
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-md-4 card">
-                    <div class="card-body">
-                        <p>Dead cat</p>
-                    </div>
-                </div>
-                <div class="col-md-4 card">
-                    <img src="images/cat3.png">
+                    <img src="<?php echo $_SESSION["imgURL"]; ?>">;
                 </div>
                 <div class="col-md-4 card">
                     <div class="card-body">
-                        <p>Ghost cat</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-4 card">
-                    <img src="images/cat4.png">
-                </div>
-                <div class="col-md-4 card">
-                    <div class="card-body">
-                        <p>Ghost cat</p>
+                        <p> Word: <?php echo $_SESSION['prompt'];?></p>
                     </div>
                 </div>
             </div>
