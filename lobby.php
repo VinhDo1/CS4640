@@ -26,9 +26,18 @@
         if(isset($_SESSION['username']))
         {
     ?>
-    <h1 id= "lobbyspace">
-        Lobby
-    </h1>
+    <header>
+    <div class="row">
+        <div class="col-md-4">
+                <p>
+                <button class="btn btn-lg btn-primary" name='btnaction' value='home' type="submit" onclick="window.location.href='profile.php'">View Profile</button>
+            </p>
+        </div>
+        <div class="col-md-4">
+        <h1>Lobby</h1>
+        </div>
+    </div>
+    </header>
     <h3>Welcome, <font color="black" style="font-style:italic"><?php if(isset($_SESSION['username'])) echo $_SESSION['username'] . "!";?></font></h1>
     <div class="row">
         <div class="col-md-4"></div>
@@ -42,8 +51,8 @@
                     <!-- <input type ="hidden" name ="roomCode"
                         value="<?php if(!empty($_POST['code'])) echo $_POST['code'] ?>" > -->
                 </div>    
-                <br/><input type="submit" value="Join Game" class="btn btn-primary btn-lg"></input>
-
+                <br/>
+                <input type="submit" value="Join Game" class="btn btn-primary btn-lg"></input>
                 </div> 
             </form>
         </div>
@@ -59,6 +68,7 @@
         $code = '';
         if(!empty($_GET['code']))
         {
+            $_SESSION[code] = $_GET['code'];
             header('Location: ' . 'enterWord.php?roomCode=' . $_GET['code']);
         }
     ?>

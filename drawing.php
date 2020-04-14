@@ -85,8 +85,8 @@
     </div>
     <div class="row" text-align="center">
         <div class="col-md-12">
-            <button class="btn btn-danger btn-game" onclick="window.location.href='lobby.php'">Exit Game</button>
             <button class="btn btn-success btn-game" onclick="done();">Done</button>
+            <button class="btn btn-danger btn-game" onclick="window.location.href='lobby.php'">Exit Game</button>
         </div>
     </div>
     <script src="drawing.js"></script>
@@ -111,7 +111,7 @@
 
     <?php
             if(isset($_POST['drawingURL'])){
-                $_SESSION["imgURL"] = $_POST['drawingURL']; 
+                $_SESSION["imgURL"] = $_POST['drawingURL'];
             }
     ?>
 

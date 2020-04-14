@@ -18,6 +18,7 @@
 
     <body class="container">
     <?php 
+        ob_start();
         session_start();
         if(isset($_SESSION['username']))
         {
@@ -34,51 +35,29 @@
                     <button class="btn btn-lg btn-success btn-top" type="submit" onclick="newGame()">New Game</button>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-4 card">
-                    <img src="images/cat1.png">
-                </div>
-                <div class="col-md-4 card">
-                    <div class="card-body">
-                        <p>Cat that is dead inside</p>
-                    </div>
-                </div>
-                <div class="col-md-4 card">
-                    <img src="images/cat2.png">
-                </div>
-            </div>
-            
             <div class="row">
                 <div class="col-md-4 card">
                     <div class="card-body">
-                        <p>Dead cat</p>
+                        <p>Original Word: <?php echo $_SESSION['prompt'];?></p>
                     </div>
                 </div>
                 <div class="col-md-4 card">
-                    <img src="images/cat3.png">
+                    <img src="<?php echo $_SESSION["imgURL"]; ?>">
                 </div>
                 <div class="col-md-4 card">
                     <div class="card-body">
-                        <p>Ghost cat</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-4 card">
-                    <img src="images/cat4.png">
-                </div>
-                <div class="col-md-4 card">
-                    <div class="card-body">
-                        <p>Ghost cat</p>
+                        <p>Guessed Word: <?php echo $_SESSION['guess'];?></p>
                     </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-12">
-                    <button class="btn btn-lg btn-primary" type="submit" onclick="playAgain()">Play Again</button>
+                    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
+                        <input type ="hidden" name ="roomCode"
+                            value="<?php if(!empty($_SESSION['code'])) echo $_SESSION['code'] ?>" method="get">
+                        <button class="btn btn-lg btn-primary" type="submit" onclick="playAgain()">Play Again</button>
+                    </form>
                 </div>
             </div>
 
@@ -90,15 +69,21 @@
         }
 
         function newGame() {
-            if(confirm("Are you sure you want to leave the current lobby?")) {
+            //if(confirm("Are you sure you want to leave the current lobby?")) {
             document.location.href = "lobby.php";
-            }
+            //}
         }
 
-        function playAgain() {
-            document.location.href = "enterWord.php";
-        }
+        // function playAgain() {
+        //     document.location.href = "enterWord.php";
+        // }
     </script>
+    <?php
+    if(isset($_GET['roomCode']))
+    {
+        header('Location: ' . 'enterWord.php?roomCode=' . $_GET['roomCode']);
+    }
+    ?>
     <?php
     }
     else

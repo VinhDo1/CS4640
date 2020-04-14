@@ -71,15 +71,19 @@
             <div class="col-md-4">
                 <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
                     <input name="prompt" class="form-control form-control-lg guessBox" type="text" placeholder="Enter a prompt" autofocus>
-                </form>
-            </div>    
-            <div class="col-md-4"></div>
-        </div>
+                    <input type ="hidden" name ="roomCode"
+                        value="<?php if(!empty($_SESSION['code'])) echo $_SESSION['code'] ?>" method="get">
+                    </div>    
+                    <div class="col-md-4"></div>
+                    </div>
 
-        <div text-align="center">
-            <button class="btn btn-danger btn-game" onclick="window.location.href='lobby.php'">Exit Game</button>
-            <button class="btn btn-success btn-game" onclick="window.location.href='drawing.php'">Done</button>
-        </div>
+                    <div text-align="center">
+                        <button class="btn btn-success btn-game" onclick="window.location.href='drawing.php'">Done</button>    
+                    </form>
+                        <button class="btn btn-danger btn-game" onclick="window.location.href='lobby.php'">Exit Game</button>
+                        
+                    </div>
+                
     <?php 
         }
         else
@@ -90,7 +94,7 @@
     {
         $yourprompt = $_POST['prompt'];
         $_SESSION['prompt'] = $yourprompt;
-        header('Location: drawing.php');
+        header('Location: ' . 'drawing.php?roomCode=' . $_GET['roomCode']);
     }
     ?>
     </body>

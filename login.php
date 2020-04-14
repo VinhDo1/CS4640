@@ -53,7 +53,7 @@
 ?>
 <?php
     function reject($entry){
-        echo 'Incorrect ' . $entry;
+        echo $entry . ' must be alphanumeric characters';
         exit();
     }
 
