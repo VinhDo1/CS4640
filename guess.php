@@ -20,33 +20,9 @@
     
     </head>
     
-    <script>
-        function startTimer(duration, display) {
-            var timer = duration, minutes, seconds;
-            setInterval(function () {
-                minutes = parseInt(timer / 60, 10);
-                seconds = parseInt(timer % 60, 10);
-
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
-
-                display.textContent = minutes + ":" + seconds;
-
-                timer--;
-                if (timer == -2) {
-                    window.location.href='results.php'
-                }
-            }, 1000);
-        }
-
-        window.onload = function () {
-            var time = 59;
-            display = document.querySelector('#time');
-            startTimer(time, display);
-        };
-    </script>
     <body>
     <?php session_start(); 
+        ob_start();
         if(isset($_SESSION['username']))
         {  
     ?>
@@ -66,16 +42,6 @@
                     <canvas id="myCanvas" width = "1000%" height="485%" style="border:0.01rem solid #000000;background-color: white;text-align:center">
                         Sorry, your browser does not support the canvas.
                     </canvas>
-                    <script>
-                        window.onload = function() {
-                            var ctx = document.getElementById('myCanvas').getContext('2d');
-                            var img = new Image();
-                            img.onload = function() {
-                                ctx.drawImage(img, 0, 0);
-                            };
-                            img.src = '<?php echo $_SESSION["imgURL"]; ?>';
-                        }
-                    </script>
                 </div>
             </div>
             <div class="col-md-2"></div>
@@ -91,15 +57,6 @@
             <div class="col-md-4"></div>
         </div>
 
-        <?php
-            if(isset($_POST['guess']))
-            {
-                $yourprompt = $_POST['guess'];
-                $_SESSION['guess'] = $yourprompt;
-                header('Location: results.php');
-            }
-        ?>
-
         <div text-align="center">
             <button class="btn btn-danger btn-game" onclick="window.location.href='lobby.php'">Exit Game</button>
             <button class="btn btn-success btn-game" onclick="window.location.href='results.php'">Done</button>
@@ -109,5 +66,46 @@
             else
                 header('Location: login.php');
         ?>
+
+        <?php
+            if(isset($_POST['guess']))
+            {
+                $yourprompt = $_POST['guess'];
+                $_SESSION['guess'] = $yourprompt;
+                header('Location: results.php');
+            }
+        ?>
     </body>
+    <script>
+        function startTimer(duration, display) {
+            var timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = minutes + ":" + seconds;
+
+                timer--;
+                if (timer == -1) {
+                    window.location.href='results.php'
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            var time = 59;
+            display = document.querySelector('#time');
+            startTimer(time, display);
+
+            var ctx = document.getElementById('myCanvas').getContext('2d');
+            var img = new Image();
+            img.onload = function() {
+                ctx.drawImage(img, 0, 0);
+            };
+            img.src='<?php echo $_SESSION["imgURL"]; ?>';
+        };
+    </script>
 </html>
