@@ -32,7 +32,7 @@
                     <h2>Telestrations</h2>
                 </div>
                 <div class="col-md-4">
-                    <button class="btn btn-lg btn-success btn-top" type="submit" onclick="newGame()">New Game</button>
+                    <button class="btn btn-lg btn-success btn-top" type="submit" onclick="back()">Lobby</button>
                 </div>
             </div>
             <div class="row">
@@ -68,7 +68,7 @@
             }
         }
 
-        function newGame() {
+        function back() {
             //if(confirm("Are you sure you want to leave the current lobby?")) {
             document.location.href = "lobby.php";
             //}

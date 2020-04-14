@@ -38,8 +38,8 @@
     </header>
 
     <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
             <form class="needs-validation" action="<?php $_SERVER['PHP_SELF'] ?>" id="login" method="get"> 
             <div class="form-group mx-sm-5 mb-2">
             </div>    
@@ -57,7 +57,7 @@
             </div> 
         </form>
     </div>
-        <div class="col-md-4"></div>
+        <div class="col-md-3"></div>
     </div>
 <?php
     }
