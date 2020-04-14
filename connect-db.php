@@ -11,8 +11,8 @@ $host = 'localhost:3306';           // hostname
 $dbname = 'cs4640';     // database name
 
 // database credentials
-$username = 'cs4640';
-$password = 'Vdragon38#*';
+$username = 'test';
+$password = 'pass123';
 
 /******************************/
 
