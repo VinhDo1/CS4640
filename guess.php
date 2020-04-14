@@ -52,7 +52,6 @@
             <div class="col-md-4">
                 <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
                     <input name="guess" class="form-control form-control-lg guessBox" type="text" placeholder="Enter your guess" autofocus>
-                
             </div>    
             <div class="col-md-4"></div>
         </div>
