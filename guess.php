@@ -84,10 +84,21 @@
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4">
-                <input class="form-control form-control-lg guessBox" type="text" placeholder="enter your guess" autofocus>
+                <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+                    <input name="guess" class="form-control form-control-lg guessBox" type="text" placeholder="Enter your guess" autofocus>
+                </form>
             </div>    
             <div class="col-md-4"></div>
         </div>
+
+        <?php
+            if(isset($_POST['guess']))
+            {
+                $yourprompt = $_POST['guess'];
+                $_SESSION['guess'] = $yourprompt;
+                header('Location: results.php');
+            }
+        ?>
 
         <div text-align="center">
             <button class="btn btn-danger btn-game" onclick="window.location.href='lobby.php'">Exit Game</button>

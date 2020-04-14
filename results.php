@@ -42,11 +42,11 @@
                     </div>
                 </div>
                 <div class="col-md-4 card">
-                    <img src="<?php echo $_SESSION["imgURL"]; ?>">;
+                    <img src="<?php echo $_SESSION["imgURL"]; ?>">
                 </div>
                 <div class="col-md-4 card">
                     <div class="card-body">
-                        <p> Word: <?php echo $_SESSION['prompt'];?></p>
+                        <p>Guessed Word: <?php echo $_SESSION['guess'];?></p>
                     </div>
                 </div>
             </div>
