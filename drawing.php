@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <html lang="en">
     <head>	
     
@@ -33,7 +34,7 @@
 
             timer--;
             if (timer == -2) {
-                window.location.href='guess.php'
+                done();
             }
         }, 1000);
     }
@@ -85,11 +86,34 @@
     <div class="row" text-align="center">
         <div class="col-md-12">
             <button class="btn btn-danger btn-game" onclick="window.location.href='lobby.php'">Exit Game</button>
-            <button class="btn btn-success btn-game" onclick="window.location.href='guess.php'">Done</button>
+            <button class="btn btn-success btn-game" onclick="done();">Done</button>
         </div>
     </div>
     <script src="drawing.js"></script>
-    
+
+    <script>
+        function done() {
+            var canvas = document.getElementById('myCanvas');
+            var drawingURL = canvas.toDataURL();
+
+            $.ajax({ 
+                data: {drawingURL: drawingURL},
+                type: "POST",
+                success: function(output) {
+                    window.location.href='guess.php'
+                },
+                error: function (e) {
+                    console.log("Unsuccessful:", e);
+                }
+            });
+        }
+    </script>
+
+    <?php
+            if(isset($_POST['drawingURL'])){
+                $_SESSION["imgURL"] = $_POST['drawingURL']; 
+            }
+    ?>
 
     <?php 
         }

@@ -48,7 +48,7 @@
     <body>
     <?php session_start(); 
         if(isset($_SESSION['username']))
-        {
+        {  
     ?>
         <div id ="heading">
             <h3>
@@ -63,7 +63,19 @@
             </div>
             <div class="col-md-8">
                 <div class="text-center">
-                    <img class="mainImage" src="images/cat4.png" alt="...">
+                    <canvas id="myCanvas" width = "1000%" height="485%" style="border:0.01rem solid #000000;background-color: white;text-align:center">
+                        Sorry, your browser does not support the canvas.
+                    </canvas>
+                    <script>
+                        window.onload = function() {
+                            var ctx = document.getElementById('myCanvas').getContext('2d');
+                            var img = new Image();
+                            img.onload = function() {
+                                ctx.drawImage(img, 0, 0);
+                            };
+                            img.src = '<?php echo $_SESSION["imgURL"]; ?>';
+                        }
+                    </script>
                 </div>
             </div>
             <div class="col-md-2"></div>

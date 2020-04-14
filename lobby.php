@@ -59,7 +59,7 @@
         $code = '';
         if(!empty($_GET['code']))
         {
-            header('Location: ' . 'drawing.php?roomCode=' . $_GET['code']);
+            header('Location: ' . 'enterWord.php?roomCode=' . $_GET['code']);
         }
     ?>
     <script>
