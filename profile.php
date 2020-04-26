@@ -26,13 +26,18 @@
     <header>
     <div class="row">
         <div class="col-md-4">
-                <p>
+            <p>
                 <button class="btn btn-lg btn-primary" name='btnaction' value='home' type="submit" onclick="window.location.href='lobby.php'">Back to Lobby</button>
             </p>
         </div>
         <div class="col-md-4">
         <h1>Telestrations</h1>
             <h3>Changing <font color="black" style="font-style:italic"><?php if(isset($_SESSION['username'])) echo $_SESSION['username'];?></font>'s password</h3>
+        </div>
+        <div class="col-md-4">
+            <p>
+                <button class="btn btn-lg btn-danger btn-primary" name='btnaction' value='home' type="submit" onclick="window.location.href='logout.php'">Logout</button>
+            </p>
         </div>
     </div>
     </header>
@@ -95,7 +100,8 @@ function updatePassword()
 	
     $username = $_SESSION['username'];
     $password = $_GET['pwd'];
-    $hash_pwd = password_hash($password, PASSWORD_BCRYPT);
+    // $hash_pwd = password_hash($password, PASSWORD_BCRYPT);
+    $hash_pwd = $password;
     $query = "UPDATE register SET password=:password WHERE username=:username";
     $statement = $db->prepare($query);
     $statement->bindValue(':username', $username);

@@ -26,13 +26,13 @@
     
             <div class="row" style="margin-top: 1.5rem; margin-bottom: 3rem;">
                 <div class="col-md-4">
-                    <button class="btn btn-lg btn-danger btn-top" type="submit" onclick="logOut()">Log Out</button>
+                    <button class="btn btn-lg btn-success btn-top" type="submit" onclick="back()">Lobby</button>
                 </div>
                 <div class="col-md-4">
                     <h2>Telestrations</h2>
                 </div>
                 <div class="col-md-4">
-                    <button class="btn btn-lg btn-success btn-top" type="submit" onclick="back()">Lobby</button>
+                    <button class="btn btn-lg btn-danger btn-top" type="submit" onclick="logOut()">Log Out</button>
                 </div>
             </div>
             <div class="row">
@@ -56,7 +56,7 @@
                     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
                         <input type ="hidden" name ="roomCode"
                             value="<?php if(!empty($_SESSION['code'])) echo $_SESSION['code'] ?>" method="get">
-                        <button class="btn btn-lg btn-primary" type="submit" onclick="playAgain()">Play Again</button>
+                        <button class="btn btn-lg btn-primary" type="submit" >Play Again</button>
                     </form>
                 </div>
             </div>
@@ -69,14 +69,9 @@
         }
 
         function back() {
-            //if(confirm("Are you sure you want to leave the current lobby?")) {
             document.location.href = "lobby.php";
-            //}
         }
 
-        // function playAgain() {
-        //     document.location.href = "enterWord.php";
-        // }
     </script>
     <?php
     if(isset($_GET['roomCode']))

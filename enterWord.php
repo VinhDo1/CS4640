@@ -72,7 +72,7 @@
                 <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
                     <input name="prompt" class="form-control form-control-lg guessBox" type="text" placeholder="Enter a prompt" autofocus>
                     <input type ="hidden" name ="roomCode"
-                        value="<?php if(!empty($_SESSION['code'])) echo $_SESSION['code'] ?>" method="get">
+                        value="<?php if(!$_GET['code']) echo $_GET['code'] ?>" method="get">
                     </div>    
                     <div class="col-md-4"></div>
                     </div>
@@ -94,7 +94,7 @@
     {
         $yourprompt = $_POST['prompt'];
         $_SESSION['prompt'] = $yourprompt;
-        header('Location: ' . 'drawing.php?roomCode=' . $_GET['roomCode']);
+        header('Location: ' . 'drawing.php?roomCode=' . $_GET['code']);
     }
     ?>
     </body>

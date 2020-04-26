@@ -13,8 +13,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/custom.css" />
     <link rel="shortcut icon" href="images/favicon.png" type="image/ico" />
-       
-        
+               
     </head>
 
     <body>
@@ -47,6 +46,7 @@
     </div>
         <div class="col-md-4"></div>
     </div>
+
 <?php
     if (isset($_GET['btnaction']))
     {	
@@ -83,7 +83,6 @@ function register()
     $statement->closeCursor();
     session_start();
     $_SESSION['username'] = $username;
-    // $hash_pwd = password_hash($password, PASSWORD_BCRYPT);
     $_SESSION['pwd'] = $hash_pwd;
     header('Location: lobby.php');
 }

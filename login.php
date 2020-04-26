@@ -31,6 +31,7 @@
         <div class="col-md-4">
             <form class="needs-validation" action="<?php $_SERVER['PHP_SELF'] ?>" id="login" method="post"> 
             <div class="form-group mx-sm-5 mb-2">
+                <p id="failedLogin"></p>
                 <input type="text" name="username" class="form-control" id="username" aria-describedby="usernameHelp" placeholder="Enter username" autofocus required>
                 <small id="usernameHelp" class="form-text wrong-login" ></small>
             </div>    
@@ -42,7 +43,7 @@
             <div class="form-group mx-sm-5 mb-2 form-rounded">
                 <button class="btn btn-lg btn-primary" type="submit" >Sign in</button>
                 <br>    
-                <a href="register.php" class="register">Don't have an account? Register now</a>
+                <a href="http://localhost:4200" class="register">Don't have an account? Register now</a>
             </div> 
         </form>
     </div>
@@ -75,28 +76,42 @@
             }
             else
             {
-                $_SESSION['username'] = $user;
-                $hash_pwd = password_hash($pwd, PASSWORD_BCRYPT);
-                $_SESSION['pwd'] = $hash_pwd;
-                header('Location: lobby.php');
+                
+                require('connect-db.php');
+                global $db;
+                $query = "SELECT password FROM register WHERE username = :username";
+                $statement = $db->prepare($query);
+                $statement->bindValue(':username', $user);
+                $statement->execute();
+                $results = $statement->fetchAll();
+                $statement->closeCursor();
+                if(!empty($results))
+                {
+                    $hashed = $results[0]['password'];
 
+                    if($_POST['pwd'] == $hashed)
+                    {
+                        // $hash_pwd = password_hash($pwd, PASSWORD_BCRYPT);
+                        $hash_pwd = $_POST['pwd'];
+                        $_SESSION['username'] = $user;
+                        $_SESSION['pwd'] = $hash_pwd;
+                        header('Location: lobby.php');
+                    }
+                    else
+                    {
+                        echo "Invalid Password";
+                    }
+                }
+                else
+                {
+                    echo "No account found, register above";
+                }
             }
         }
     }
 
 
 ?>
-
-    <script> 
-        const username = document.getElementById("username");
-        username.addEventListener("input", function (event) {
-            if (username.validity.typeMismatch) {
-                username.setCustomValidity("Invalid username address");
-            } else {
-                username.setCustomValidity("");
-            } 
-        });
-    </script>
 
 
 </body>

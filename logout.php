@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <meta name="author" content="Vinh Do, Kirtana Pathak, Liem Budzien">
-  <meta name="description" content="Login page for Telestrations">  
+  <meta name="description" content="Logout page for Telestrations">  
     
   <link rel="shortcut icon" href="images/favicon.png" type="image/ico" />
   <title>Telestrations</title>
@@ -17,17 +17,27 @@
        
 </head>
 
+<?php
+    session_start();
+?>
+<?php
+    if(count($_SESSION) > 0)
+    {
+        foreach($_SESSION as $key => $value)
+        {
+            unset($_SESSION[$key]);
+        }
+        session_destroy();
+    }
+?>
 <body>  
     <header>
         <div class="row">
             <div class="col-md-12">
-            <div style="margin-top: 2%; margin-bottom: 2%">
-                <h3>Successfully logged out</h3>
+                <h3 >Successfully Logged Out</h3>
                 <h1>Telestrations</h1>
-                </div>
             </div>
         </div>
-        
     </header>
 
     <div class="row">
@@ -35,6 +45,7 @@
         <div class="col-md-4">
             <form class="needs-validation" action="<?php $_SERVER['PHP_SELF'] ?>" id="login" method="post"> 
             <div class="form-group mx-sm-5 mb-2">
+                <p id="failedLogin"></p>
                 <input type="text" name="username" class="form-control" id="username" aria-describedby="usernameHelp" placeholder="Enter username" autofocus required>
                 <small id="usernameHelp" class="form-text wrong-login" ></small>
             </div>    
@@ -44,20 +55,18 @@
                 <small id="passwordHelp" class="form-text wrong-login" ></small>
             </div>
             <div class="form-group mx-sm-5 mb-2 form-rounded">
-                <button class="btn btn-lg btn-primary" type="submit" onclick="login()">Sign in</button>
+                <button class="btn btn-lg btn-primary" type="submit" >Sign in</button>
                 <br>    
-                <a href="register.php" class="register">Don't have an account? Register now</a>
+                <a href="http://localhost:4200" class="register">Don't have an account? Register now</a>
             </div> 
         </form>
     </div>
         <div class="col-md-4"></div>
     </div>
-<?php
-    session_start();
-?>
+
 <?php
     function reject($entry){
-        echo 'Incorrect ' . $entry;
+        echo $entry . ' must be alphanumeric characters';
         exit();
     }
 
@@ -79,11 +88,36 @@
             }
             else
             {
-                $_SESSION['username'] = $user;
-                $hash_pwd = password_hash($pwd, PASSWORD_BCRYPT);
-                $_SESSION['pwd'] = $hash_pwd;
-                header('Location: lobby.php');
+                
+                require('connect-db.php');
+                global $db;
+                $query = "SELECT password FROM register WHERE username = :username";
+                $statement = $db->prepare($query);
+                $statement->bindValue(':username', $user);
+                $statement->execute();
+                $results = $statement->fetchAll();
+                $statement->closeCursor();
+                if(!empty($results))
+                {
+                    $hashed = $results[0]['password'];
 
+                    if($_POST['pwd'] == $hashed)
+                    {
+                        // $hash_pwd = password_hash($pwd, PASSWORD_BCRYPT);
+                        $hash_pwd = $_POST['pwd'];
+                        $_SESSION['username'] = $user;
+                        $_SESSION['pwd'] = $hash_pwd;
+                        header('Location: lobby.php');
+                    }
+                    else
+                    {
+                        echo "Invalid Password";
+                    }
+                }
+                else
+                {
+                    echo "No account found, register above";
+                }
             }
         }
     }
@@ -91,26 +125,6 @@
 
 ?>
 
-    <script> 
-        const username = document.getElementById("username");
-        username.addEventListener("input", function (event) {
-            if (username.validity.typeMismatch) {
-                username.setCustomValidity("Invalid username address");
-            } else {
-                username.setCustomValidity("");
-            } 
-        });
-    </script>
-<?php
-    if(count($_SESSION) > 0)
-    {
-        foreach($_SESSION as $key => $value)
-        {
-            unset($_SESSION[$key]);
-        }
-        session_destroy();
-    }
-?>
 
 </body>
 </html>

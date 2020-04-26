@@ -22,6 +22,12 @@
 </head>
 <body>
     <?php 
+        header('Access-Control-Allow-Origin: http://localhost:4200');
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: X-Requested-With, Content-Type, Origin, Authorization, Accept, Client-Security-Token, Accept-Encoding');
+        header('Access-Control-Max-Age: 1000');
+        header('Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE, PUT');
+        
         session_start();
         if(isset($_SESSION['username']))
         {
@@ -30,11 +36,16 @@
     <div class="row">
         <div class="col-md-4">
                 <p>
-                <button class="btn btn-lg btn-primary" name='btnaction' value='home' type="submit" onclick="window.location.href='profile.php'">View Profile</button>
-            </p>
+                    <button class="btn btn-lg btn-primary" name='btnaction' value='home' type="submit" onclick="window.location.href='profile.php'">View Profile</button>
+                </p>
         </div>
         <div class="col-md-4">
         <h1>Lobby</h1>
+        </div>
+        <div class="col-md-4">
+                <p>
+                    <button class="btn btn-lg btn-danger btn-primary" name='btnaction' value='home' type="submit" onclick="window.location.href='logout.php'">Logout</button>
+                </p>
         </div>
     </div>
     </header>
@@ -48,8 +59,6 @@
             <form class="needs-validation" action="<?php $_SERVER['PHP_SELF']?>" onsubmit= "return validateCode()" method="get"> 
                 <div class="form-group mx-sm-5 mb-2">
                     <input type="text" id="code" name="code" class="form-control" placeholder="Enter 6 letter code" autofocus required/>
-                    <!-- <input type ="hidden" name ="roomCode"
-                        value="<?php if(!empty($_POST['code'])) echo $_POST['code'] ?>" > -->
                 </div>    
                 <br/>
                 <input type="submit" value="Join Game" class="btn btn-primary btn-lg"></input>
@@ -68,7 +77,7 @@
         $code = '';
         if(!empty($_GET['code']))
         {
-            $_SESSION[code] = $_GET['code'];
+            $_SESSION['code'] = $_GET['code'];
             header('Location: ' . 'enterWord.php?roomCode=' . $_GET['code']);
         }
     ?>
